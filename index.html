@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07030f">
+<title>LOBBY | Digital Gaming Store</title>
+<style>
+:root{--bg:#050b16;--panel:#0b1424;--panel2:#101d31;--blue:#38bdf8;--violet:#8b5cf6;--cyan:#2dd4bf;--gold:#fbbf24;--text:#f7fbff;--muted:#9aa9bd;--line:rgba(148,163,184,.16);--shadow:0 24px 80px rgba(0,0,0,.42)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-width:320px}body:before{content:"";position:fixed;inset:0;z-index:-3;background:linear-gradient(115deg,rgba(8,13,27,.97),rgba(12,24,47,.95))}body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 10% 10%,rgba(255,184,77,.13),transparent 28%),radial-gradient(circle at 90% 20%,rgba(81,214,200,.12),transparent 25%),radial-gradient(circle at 50% 90%,rgba(109,92,255,.16),transparent 35%)}
+a{color:inherit}button,input{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:1000;height:72px;padding:0 4%;display:flex;align-items:center;justify-content:space-between;background:rgba(8,13,27,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:1000;letter-spacing:2px;font-size:24px}.logo-mark{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--purple));box-shadow:0 0 28px rgba(155,92,255,.5);font-size:20px}.logo span{color:var(--pink)}nav{display:flex;gap:22px}nav a{text-decoration:none;color:#ddd;font-size:12px;font-weight:800;letter-spacing:.5px}nav a:hover{color:#fff;text-shadow:0 0 14px var(--pink)}.header-right{display:flex;align-items:center;gap:10px}.points-pill,.cart{border:1px solid var(--line);background:rgba(255,255,255,.06);border-radius:12px;height:40px;display:flex;align-items:center;justify-content:center}.points-pill{padding:0 12px;color:var(--gold);font-size:12px;font-weight:900}.cart{width:42px;position:relative}.cart-count{position:absolute;right:-5px;top:-6px;min-width:19px;height:19px;border-radius:50%;background:var(--pink);font-size:10px;display:grid;place-items:center;font-weight:900}
+#welcomeScreen{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,rgba(155,92,255,.24),transparent 35%),#07030f;transition:.45s}.welcome-box{width:min(650px,92%);padding:55px 35px;text-align:center;border:1px solid rgba(255,255,255,.12);border-radius:30px;background:rgba(12,6,23,.86);box-shadow:0 0 100px rgba(155,92,255,.18)}.welcome-logo{width:95px;height:95px;object-fit:contain;filter:drop-shadow(0 0 25px rgba(255,60,172,.45));margin-bottom:15px}.welcome-box h1{font-size:clamp(48px,9vw,86px);line-height:.9;letter-spacing:-4px}.welcome-box h1 span{display:block;background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}.welcome-box p{color:var(--muted);max-width:500px;margin:22px auto;line-height:1.7}.enter-btn,.primary-btn{border:0;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:13px;background:linear-gradient(100deg,var(--purple),var(--pink));color:#fff;font-weight:1000;box-shadow:0 10px 35px rgba(255,60,172,.2);transition:.25s}.enter-btn:hover,.primary-btn:hover{transform:translateY(-2px);box-shadow:0 14px 45px rgba(155,92,255,.35)}
+main{max-width:1200px;margin:auto}.hero{min-height:650px;padding:80px 4%;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.hero-text small{font-size:11px;font-weight:1000;color:var(--cyan);letter-spacing:3px}.hero-text h1{font-size:clamp(52px,7vw,92px);line-height:.92;letter-spacing:-5px;margin:18px 0}.hero-text h1 span{background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-text p{max-width:570px;color:#bcb6ca;line-height:1.7;font-size:15px}.hero-buttons{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}.secondary-btn{display:inline-flex;padding:14px 22px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.05);text-decoration:none;font-weight:900}.hero-showcase{height:490px;border-radius:28px;overflow:hidden;position:relative;border:1px solid var(--line);background:#0d0717;box-shadow:var(--shadow)}.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s}.hero-slide.active{opacity:1}.hero-slide img{width:100%;height:100%;object-fit:cover}.hero-slide:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 60%)}.hero-caption{position:absolute;z-index:2;left:24px;bottom:22px}.hero-caption h3{font-size:25px}.hero-caption p{color:#ddd;font-size:12px;margin-top:5px}.slider-dots{position:absolute;z-index:3;right:20px;bottom:24px;display:flex;gap:6px}.dot{width:7px;height:7px;border-radius:50%;background:#fff5;cursor:pointer}.dot.active{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+section{padding:75px 4%}.section-title{text-align:center;margin-bottom:35px}.section-title h2{font-size:34px;letter-spacing:-1px}.section-title h2 span{color:var(--pink)}.section-title p{color:var(--muted);font-size:13px;margin-top:8px}.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.product-card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(150deg,rgba(19,31,56,.98),rgba(11,18,34,.98));box-shadow:0 10px 30px rgba(0,0,0,.2);transition:.25s;cursor:pointer}.product-card:hover{transform:translateY(-5px);border-color:rgba(81,214,200,.55);box-shadow:0 16px 45px rgba(81,214,200,.12)}.product-image{height:175px;overflow:hidden;background:linear-gradient(135deg,#0b1022,#17132e);position:relative}.product-image:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 45%,rgba(255,255,255,.03));pointer-events:none}.product-image img{width:100%;height:100%;object-fit:cover;transition:.4s;display:block}.product-card:hover .product-image img{transform:scale(1.05)}.product-info{padding:15px}.product-info h3{font-size:15px}.product-info p{font-size:11px;color:var(--muted);margin:6px 0 13px}.buy-btn{width:100%;padding:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;border-radius:10px;font-size:11px;font-weight:900}.buy-btn:hover{background:linear-gradient(90deg,var(--pink),var(--purple));border-color:transparent}
+.deals-wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}.deal-card,.reward-card,.policy-box,.payment-box,.contact-box{border:1px solid var(--line);background:linear-gradient(145deg,rgba(24,12,41,.93),rgba(9,5,16,.92));border-radius:24px;padding:28px;box-shadow:var(--shadow)}.deal-card{position:relative;overflow:hidden}.deal-card:after{content:"%";position:absolute;right:15px;top:-30px;font-size:160px;font-weight:1000;color:rgba(255,60,172,.08)}.deal-tag{display:inline-block;color:#07030f;background:var(--gold);padding:6px 10px;border-radius:999px;font-size:10px;font-weight:1000}.deal-card h3{font-size:28px;margin:16px 0 8px}.deal-card p,.reward-card p{color:var(--muted);line-height:1.7;font-size:13px}.deal-list{margin:18px 0 0 18px;color:#ddd;line-height:1.9;font-size:13px}.reward-card h3{color:var(--gold);font-size:24px}.points-number{font-size:48px;font-weight:1000;margin:10px 0;background:linear-gradient(90deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}.points-input{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:#090510;color:#fff;outline:none;margin:15px 0}.points-input:focus{border-color:var(--purple)}.mini-btn{padding:11px 14px;border:0;border-radius:10px;background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff;font-weight:900;font-size:11px}.redeem-note{margin-top:12px;font-size:11px;color:#8e889d;line-height:1.5}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:18px}.feature{padding:23px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.feature-icon{font-size:26px;margin-bottom:10px}.feature h3{font-size:14px}.feature p{font-size:12px;color:var(--muted);line-height:1.6;margin-top:7px}
+.policy-box{max-width:900px;margin:auto}.policy-box h3{color:var(--pink);margin-bottom:14px}.policy-box ul{padding-left:20px;color:#c4bfcd;line-height:1.8;font-size:13px}.policy-box li{margin-bottom:10px}.policy-box strong{color:#fff}.policy-note{margin-top:18px;padding:14px;border-radius:12px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.2);color:#ddd;font-size:12px;line-height:1.6}
+.payment-box{max-width:720px;margin:auto;text-align:center}.mmg-name{color:var(--cyan);font-size:12px;font-weight:1000;letter-spacing:2px}.mmg-number{font-size:40px;font-weight:1000;letter-spacing:2px;margin:10px 0;color:#fff}.payment-box p{color:var(--muted);font-size:13px;line-height:1.7}.merchant{color:var(--gold)}.contact-box{text-align:center}.contact-box p{color:var(--muted);margin:8px 0 20px}.wa-btn{background:#19c463}
+.test-note{margin:0 4% 30px;padding:17px;text-align:center;border:1px solid rgba(255,209,102,.28);background:rgba(255,209,102,.06);border-radius:15px;color:#e7dfc9;font-size:12px;line-height:1.6}.test-note strong{color:var(--gold)}footer{padding:35px 4%;text-align:center;border-top:1px solid var(--line);background:rgba(5,2,10,.75)}footer strong{font-size:22px;letter-spacing:2px}footer p{color:#777080;font-size:11px;margin-top:7px}
+.modal{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.modal-box{width:min(560px,100%);max-height:92vh;overflow:auto;border-radius:25px;background:#0e0718;border:1px solid rgba(155,92,255,.45);box-shadow:0 0 80px rgba(155,92,255,.2);padding:25px;position:relative}.close{position:absolute;right:14px;top:12px;width:35px;height:35px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:21px}.modal-product{display:flex;gap:15px;align-items:center;margin-bottom:22px}.modal-product img{width:90px;height:75px;border-radius:12px;object-fit:cover}.modal-product h2{font-size:22px}.modal-product p{color:#999;font-size:12px;margin-top:4px}.field-label{display:block;color:#bbb;font-size:10px;font-weight:900;margin:14px 0 7px;text-transform:uppercase;letter-spacing:.7px}.input{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:#08040e;color:#fff;outline:none}.packages{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.package{padding:13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:#ddd;text-align:left}.package:hover,.package.selected{border-color:var(--pink);background:rgba(255,60,172,.08)}.package strong{display:block;font-size:12px}.package span{display:block;color:var(--gold);font-size:13px;font-weight:1000;margin-top:5px}.qty{display:flex;align-items:center;gap:12px;margin-top:8px}.qty button{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:#ffffff08;color:#fff}.total-box{margin-top:18px;padding:16px;border-radius:14px;background:linear-gradient(90deg,rgba(255,60,172,.09),rgba(36,217,255,.07));border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.total-box span{color:var(--muted);font-size:11px}.total-box strong{font-size:22px;color:var(--gold)}.send-btn{width:100%;margin-top:15px;padding:14px;border:0;border-radius:12px;background:linear-gradient(100deg,var(--purple),var(--pink));color:#fff;font-weight:1000}.modal-help{font-size:10px;color:#777080;margin-top:9px;line-height:1.5}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);z-index:6000;opacity:0;pointer-events:none;background:#161020;border:1px solid rgba(255,255,255,.12);padding:13px 17px;border-radius:12px;box-shadow:var(--shadow);font-size:12px;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:950px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:55px}.product-grid{grid-template-columns:repeat(3,1fr)}.deals-wrap{grid-template-columns:1fr}}
+@media(max-width:700px){.hero{padding:45px 4%}.hero-text h1{font-size:55px}.hero-showcase{height:370px}.product-grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.points-pill{display:none}.packages{grid-template-columns:1fr}}
+@media(max-width:430px){.product-image{height:130px}.product-info{padding:11px}.product-info h3{font-size:12px}.welcome-box{padding:40px 20px}.hero-showcase{height:315px}.modal-box{padding:20px}}
+
+.official-panel{position:relative;z-index:1;width:92%;height:145px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(145deg,#f8fafc,#dbeafe);color:#111827;box-shadow:0 18px 40px rgba(0,0,0,.22);overflow:hidden}.official-panel:before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle,rgba(56,189,248,.28),transparent 55%)}.official-logo,.official-sub{position:relative;font-weight:900}.official-logo{font-size:2rem;letter-spacing:-.05em}.official-sub{font-size:.72rem;letter-spacing:.22em;color:#475569}.amazon-gift{background:linear-gradient(145deg,#fff,#e2e8f0)}.amazon-gift .official-logo{font-family:Arial,sans-serif;color:#111}.tiktok-coins{background:linear-gradient(145deg,#111827,#020617);color:#fff}.tiktok-coins .official-logo{font-family:Arial,sans-serif}.tiktok-coins .official-sub{color:#67e8f9}.google-play{background:linear-gradient(145deg,#ffffff,#e0f2fe)}.google-play .official-logo{background:linear-gradient(90deg,#34a853,#4285f4,#fbbc05,#ea4335);-webkit-background-clip:text;background-clip:text;color:transparent}.google-play .official-sub{color:#475569}
+/* ===== PROFESSIONAL LOBBY REDESIGN ===== */
+body{background:var(--bg);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body:before{background:radial-gradient(circle at 12% 0%,rgba(56,189,248,.12),transparent 27%),radial-gradient(circle at 88% 8%,rgba(139,92,246,.14),transparent 30%),linear-gradient(145deg,#050b16 0%,#081426 55%,#050b16 100%)}
+header{background:rgba(5,11,22,.86)!important;border-bottom:1px solid rgba(56,189,248,.14)!important;backdrop-filter:blur(18px);box-shadow:0 12px 40px rgba(0,0,0,.22)}
+.logo{letter-spacing:.02em}.logo span{color:var(--blue)!important}.logo-mark{background:linear-gradient(135deg,var(--blue),var(--violet))!important;box-shadow:0 0 28px rgba(56,189,248,.25)}
+nav a:hover{color:var(--blue)!important}
+.hero{max-width:1240px!important;grid-template-columns:1.05fr .95fr!important;gap:44px!important;padding-top:64px!important}
+.hero-text h1{font-size:clamp(3.2rem,7vw,6.3rem)!important;line-height:.92!important;letter-spacing:-.055em!important}.hero-text h1 span{background:linear-gradient(90deg,var(--blue),#7dd3fc 45%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.hero-text p{max-width:640px!important;font-size:1.05rem!important;color:#b7c5d8!important}
+.primary-btn,.send-btn,.buy-btn{background:linear-gradient(135deg,var(--blue),#2563eb)!important;box-shadow:0 12px 30px rgba(37,99,235,.25)!important}.secondary-btn{border-color:rgba(56,189,248,.3)!important;color:#dbeafe!important;background:rgba(56,189,248,.05)!important}
+.hero-showcase{border:1px solid rgba(56,189,248,.18)!important;background:linear-gradient(145deg,rgba(13,28,49,.98),rgba(8,16,30,.98))!important;box-shadow:var(--shadow)!important;border-radius:28px!important;overflow:hidden}
+.hero-slide img{object-fit:contain!important;padding:26px!important;background:radial-gradient(circle at 50% 45%,rgba(56,189,248,.14),transparent 48%),linear-gradient(145deg,#0b1729,#07101e)!important}
+.hero-caption{background:linear-gradient(180deg,transparent,rgba(3,8,17,.96))!important;padding:46px 24px 22px!important}
+section{max-width:1240px!important}.section-title h2{letter-spacing:-.03em!important}.section-title h2 span{color:var(--blue)!important}
+.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}
+.product-card{background:linear-gradient(145deg,rgba(15,29,49,.98),rgba(8,17,30,.98))!important;border:1px solid rgba(148,163,184,.14)!important;border-radius:22px!important;overflow:hidden!important;box-shadow:0 12px 35px rgba(0,0,0,.2)!important;transition:transform .25s,border-color .25s,box-shadow .25s!important}
+.product-card:hover{transform:translateY(-7px)!important;border-color:rgba(56,189,248,.42)!important;box-shadow:0 22px 55px rgba(0,0,0,.34),0 0 0 1px rgba(56,189,248,.08)!important}
+.product-image{height:190px!important;background:linear-gradient(145deg,#0d1b2f,#07111f)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:18px!important;position:relative!important}
+.product-image:after{content:"";position:absolute;inset:auto 20% 10px;height:18px;background:rgba(56,189,248,.18);filter:blur(22px);border-radius:50%}
+.product-image img{width:100%!important;height:100%!important;object-fit:contain!important;position:relative;z-index:1;border-radius:14px!important}
+.product-info{padding:20px!important}.product-info h3{font-size:1.05rem!important}.product-info p{color:#8fa1b7!important;margin-top:5px!important}.buy-btn{border-radius:12px!important;font-weight:800!important;letter-spacing:.02em!important}
+.deals-wrap{gap:18px!important}.deal-card,.reward-card,.policy-box,.payment-box,.contact-box{background:linear-gradient(145deg,rgba(13,27,46,.98),rgba(7,16,29,.98))!important;border:1px solid rgba(56,189,248,.15)!important;border-radius:24px!important;box-shadow:var(--shadow)!important}
+.deal-card{position:relative;overflow:hidden}.deal-card:before{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.18),transparent 68%)}
+.deal-tag{background:rgba(56,189,248,.12)!important;color:#7dd3fc!important;border:1px solid rgba(56,189,248,.22)!important}
+.points-number{background:linear-gradient(135deg,var(--blue),var(--violet))!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.feature{background:rgba(11,20,36,.82)!important;border:1px solid rgba(148,163,184,.12)!important;border-radius:20px!important}.feature-icon{background:rgba(56,189,248,.1)!important;color:var(--blue)!important}
+.mmg-name{color:#7dd3fc!important}.mmg-number{color:#fff!important;text-shadow:0 0 28px rgba(56,189,248,.25)}
+.modal-box{background:#081321!important;border:1px solid rgba(56,189,248,.2)!important;border-radius:24px!important;box-shadow:0 35px 100px rgba(0,0,0,.55)!important}.packages button.active{border-color:var(--blue)!important;background:rgba(56,189,248,.1)!important}
+.test-note{background:linear-gradient(90deg,rgba(56,189,248,.08),rgba(139,92,246,.08))!important;border-top:1px solid rgba(56,189,248,.14)!important}
+@media(max-width:900px){.hero{grid-template-columns:1fr!important}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:620px){.product-grid{grid-template-columns:1fr!important}.product-image{height:205px!important}.hero{padding-top:32px!important}}
+.image-fallback{object-fit:contain!important}.product-image img,.hero-slide img{display:block;width:100%;height:100%;object-fit:contain;background:linear-gradient(135deg,#0b1220,#111c31)}
+</style>
+</head>
+<body>
+
+<div id="welcomeScreen">
+  <div class="welcome-box">
+    <img class="welcome-logo" src="1787436309105.png" alt="LOBBY logo" onerror="this.style.display='none'">
+    <h1>LOBBY <span>STORE</span></h1>
+    <p>Gaming top-ups, gift cards and digital products — built for gamers in Guyana.</p>
+    <button class="enter-btn" onclick="enterStore()">ENTER LOBBY →</button>
+  </div>
+</div>
+
+<header>
+  <a class="logo" href="#home"><div class="logo-mark">L</div>LOBBY <span>STORE</span></a>
+  <nav>
+    <a href="#home">HOME</a><a href="#gaming">GAMING</a><a href="#deals">DEALS</a><a href="#rewards">REWARDS</a><a href="#policy">POLICY</a><a href="#payment">PAYMENT</a><a href="#contact">CONTACT</a>
+  </nav>
+  <div class="header-right"><div class="points-pill">⭐ <span id="headerPoints">0</span> PTS</div><div class="cart" onclick="document.getElementById('gaming').scrollIntoView()">🛒<span class="cart-count" id="cartCount">0</span></div></div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="hero-text">
+    <small>LOBBY DIGITAL GAMING</small>
+    <h1>LEVEL UP<br><span>YOUR GAME.</span></h1>
+    <p>Top up your favorite games, grab digital gift cards and earn LOBBY Points every time you complete a purchase.</p>
+    <div class="hero-buttons"><a href="#gaming" class="primary-btn">SHOP NOW →</a><a href="#deals" class="secondary-btn">LOBBY DEALS</a></div>
+  </div>
+  <div class="hero-showcase" id="heroShowcase">
+    <div class="hero-slide active"><img src="https://cms-media.roblox.com/assets/4d55ea80-690f-f6ac-dda3-b7fb9355555c.webp" alt="Roblox"><div class="hero-caption"><h3>ROBLOX</h3><p>Robux & Gift Cards</p></div></div>
+    <div class="hero-slide"><img src="https://cdn.wildflamestudio.com/common/web_event/official2.ff.garena.all/img/20228/eb56db6919078b837ffd2e6a3b7e4aac.jpg" alt="Free Fire"><div class="hero-caption"><h3>FREE FIRE</h3><p>Diamonds top-up</p></div></div>
+    <div class="hero-slide"><img src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mobile/common/COD_Mobile_Logo_New_2025.webp" alt="Call of Duty Mobile"><div class="hero-caption"><h3>CALL OF DUTY MOBILE</h3><p>CP top-up</p></div></div>
+    <div class="hero-slide"><img src="https://www.pubgmobile.com/images/event/brandassets/down-logo1.png" alt="PUBG Mobile"><div class="hero-caption"><h3>PUBG MOBILE</h3><p>UC top-up</p></div></div>
+    <div class="hero-slide"><img data-official="google-play" alt="Google Play"><div class="hero-caption"><h3>GOOGLE PLAY</h3><p>Gift Cards</p></div></div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<section id="gaming">
+  <div class="section-title"><h2>SHOP <span>LOBBY</span></h2><p>Select a product and choose the package you want.</p></div>
+  <div class="product-grid">
+    <div class="product-card" onclick="openProduct('tiktok')"><div class="product-image"><img data-official="tiktok-coins" alt="TikTok Coins"></div><div class="product-info"><h3>TikTok Coins</h3><p>Coins top-up</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('robloxGift')"><div class="product-image"><img src="https://cms-media.roblox.com/assets/4d55ea80-690f-f6ac-dda3-b7fb9355555c.webp" alt="Roblox Gift Card"></div><div class="product-info"><h3>Roblox Gift Card</h3><p>USD Gift Cards</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('roblox')"><div class="product-image"><img src="https://cms-media.roblox.com/assets/4d55ea80-690f-f6ac-dda3-b7fb9355555c.webp" alt="Roblox Robux"></div><div class="product-info"><h3>Roblox Robux</h3><p>Robux top-up</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('freefire')"><div class="product-image"><img src="https://cdn.wildflamestudio.com/common/web_event/official2.ff.garena.all/img/20228/eb56db6919078b837ffd2e6a3b7e4aac.jpg" alt="Free Fire"></div><div class="product-info"><h3>Free Fire</h3><p>Diamonds</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('cod')"><div class="product-image"><img src="https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mobile/common/COD_Mobile_Logo_New_2025.webp" alt="Call of Duty Mobile"></div><div class="product-info"><h3>Call of Duty Mobile</h3><p>CP top-up</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('pubg')"><div class="product-image"><img src="https://www.pubgmobile.com/images/event/brandassets/down-logo1.png" alt="PUBG Mobile"></div><div class="product-info"><h3>PUBG Mobile</h3><p>UC top-up</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('amazon')"><div class="product-image"><img data-official="amazon-gift" alt="Amazon Gift Card"></div><div class="product-info"><h3>Amazon Gift Card</h3><p>USD Gift Cards</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('binance')"><div class="product-image"><img src="https://bin.bnbstatic.com/static/gift-card-web/hero_illustration_grey_bg.svg" alt="Binance Gift Card"></div><div class="product-info"><h3>Binance Gift Card</h3><p>USDT</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('razer')"><div class="product-image"><img src="https://media.gold.razer.com/payweb/assets/images/logo/icon-razer-gold-709x155.png" alt="Razer Gold"></div><div class="product-info"><h3>Razer Gold</h3><p>USD Gift Cards</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('google')"><div class="product-image"><img data-official="google-play" alt="Google Play"></div><div class="product-info"><h3>Google Play</h3><p>USD Gift Cards</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+    <div class="product-card" onclick="openProduct('apple')"><div class="product-image"><img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/apple-gift-cards-landing-202006?.v=U0EzaXNyc2ZlYWVYR0IxNTgwM2hBenVpVFFlVk9JRDNmTy85OE54VXNkUDdNdktaODg4Q2pUb3oxbHJXYnlHTUJ3b1EyanZvd0crOUVVd3ZSZWl3MldaWlg4SXd3WDRBclNoVm5RMFA5SWZXNm9oamhpbmdGcHIwa2hOU3lmQkw&fmt=jpeg&hei=1176&qlt=90&wid=2982" alt="Apple Gift Card"></div><div class="product-info"><h3>Apple Gift Card</h3><p>USD Gift Cards</p><button class="buy-btn">VIEW PACKAGES</button></div></div>
+  </div>
+</section>
+
+<section id="deals">
+  <div class="section-title"><h2>LOBBY <span>DEALS</span></h2><p>Extra value for gamers who shop with LOBBY.</p></div>
+  <div class="deals-wrap">
+    <div class="deal-card"><span class="deal-tag">WEEKLY LOBBY DROP</span><h3>Buy 2 qualifying top-ups → earn a bonus 25 LOBBY Points.</h3><p>Stack your regular purchase points with the weekly bonus. Qualifying products and bonus availability can change during the test run.</p><ul class="deal-list"><li>Points are added after your order is recorded.</li><li>Use your points toward future eligible purchases.</li><li>Check your balance in the Rewards section.</li></ul></div>
+    <div class="reward-card" id="rewards"><h3>⭐ LOBBY REWARDS</h3><div class="points-number" id="rewardPoints">0</div><p>Points on this device</p><input class="points-input" id="pointsAccount" placeholder="Enter your Gamer ID / email"><button class="mini-btn" onclick="showPoints()">CHECK MY POINTS</button><p class="redeem-note">Demo rule: earn 1 point for every GYD $100 spent. 100 points can be used as GYD $500 credit on an eligible future order. Final verification is handled by LOBBY.</p></div>
+  </div>
+  <div class="features"><div class="feature"><div class="feature-icon">⚡</div><h3>FAST ORDERING</h3><p>Your order is prepared as a WhatsApp message so you can send the details directly to LOBBY.</p></div><div class="feature"><div class="feature-icon">⭐</div><h3>EARN POINTS</h3><p>Every completed purchase can build your LOBBY Points balance for future eligible purchases.</p></div><div class="feature"><div class="feature-icon">🔐</div><h3>SIMPLE & CLEAR</h3><p>See the package price, payment details and order information before sending.</p></div></div>
+</section>
+
+<section id="policy"><div class="section-title"><h2>LOBBY <span>POLICY</span></h2><p>Please read before placing an order.</p></div><div class="policy-box"><h3>DIGITAL ORDER POLICY</h3><ul><li><strong>Check before paying.</strong> Confirm the game, package, region, player ID, email or username before submitting your order.</li><li><strong>Digital products.</strong> Once a digital code or top-up has been delivered or redeemed, it generally cannot be returned or exchanged.</li><li><strong>Incorrect details.</strong> LOBBY is not responsible for delivery to an incorrect Gamer ID, email or account information supplied by the customer.</li><li><strong>Payment verification.</strong> Orders are processed after the MMG payment is received and verified.</li><li><strong>Processing.</strong> Delivery time can vary depending on the product and service availability. WhatsApp is used for order communication.</li><li><strong>Points.</strong> LOBBY Points are a store reward for recorded purchases. Points have no cash value and may be subject to verification, expiry or program changes.</li><li><strong>Test-run terms.</strong> This is a test version of the LOBBY Store. Product availability, pricing, rewards and policies may change before the official launch.</li></ul><div class="policy-note"><strong>Important:</strong> Keep your MMG transaction ID and your WhatsApp conversation until your order is completed.</div></div></section>
+
+<section id="payment"><div class="section-title"><h2>PAYMENT <span>METHOD</span></h2><p>Pay through MMG, then send your order through WhatsApp.</p></div><div class="payment-box"><div class="mmg-name">MMG MERCHANT</div><div class="mmg-number">761-4285</div><p>Merchant Name: <strong class="merchant">LOBBY</strong><br><br>After payment, enter your MMG transaction ID in the order window. If you do not have it yet, you can leave it blank and send the order.</p></div></section>
+
+<section id="contact"><div class="section-title"><h2>CONTACT <span>LOBBY</span></h2><p>Need help with an order?</p></div><div class="contact-box"><h3>READY TO LEVEL UP?</h3><p>Send your order details or ask a question directly on WhatsApp.</p><a class="primary-btn wa-btn" href="https://wa.me/13436555995" target="_blank" rel="noopener">CHAT WITH LOBBY →</a></div></section>
+</main>
+
+<div class="test-note"><strong>TEST RUN NOTICE:</strong> This is a test run of the LOBBY Store website. The official website will launch soon. Prices, products, rewards and features may change before launch.</div>
+<footer><strong>LOBBY STORE</strong><p>© 2026 LOBBY • Digital Gaming Store • Guyana</p></footer>
+
+<div class="modal" id="productModal"><div class="modal-box"><button class="close" onclick="closeProduct()">×</button><div class="modal-product"><img id="modalImage" src="" alt="" onerror="fallbackBrandImage(this)"><div><h2 id="modalTitle">Product</h2><p id="modalType">Choose your package</p></div></div><label class="field-label">Select Package</label><div class="packages" id="packageList"></div><div id="accountFieldWrap"><label class="field-label" id="accountLabel">Gamer ID / Username / Email</label><input class="input" id="accountInput" placeholder="Enter your details"></div><label class="field-label">MMG Transaction ID <span style="color:#9b5cff">(Optional)</span></label><input class="input" id="transactionInput" placeholder="Enter MMG transaction ID"><label class="field-label">Quantity</label><div class="qty"><button onclick="changeQty(-1)">−</button><strong id="qtyValue">1</strong><button onclick="changeQty(1)">+</button></div><div class="total-box"><span>ORDER TOTAL</span><strong id="totalValue">GYD $0</strong></div><button class="send-btn" onclick="sendOrder()">SEND ORDER TO WHATSAPP →</button><p class="modal-help">Your order message will open in WhatsApp using LOBBY's business contact. Do not send passwords or sensitive account credentials.</p></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const BUSINESS_WHATSAPP='13436555995';
+const POINT_RATE=100;
+const REWARD_BLOCK=100;
+const REWARD_VALUE=500;
+const ART_STYLES={
+  'TikTok Coins':['TIKTOK','COINS','#111827','#ff0050'],
+  'Roblox Gift Card':['ROBLOX','GIFT CARD','#111827','#e2231a'],
+  'Roblox Robux':['ROBLOX','ROBUX','#111827','#e2231a'],
+  'Free Fire':['FREE FIRE','DIAMONDS','#101a14','#ff9f1c'],
+  'Call of Duty Mobile':['CALL OF DUTY','MOBILE CP','#0b1220','#20e3c2'],
+  'PUBG Mobile':['PUBG','MOBILE UC','#16100c','#f5a623'],
+  'Amazon Gift Card':['AMAZON','GIFT CARD','#111827','#ff9900'],
+  'Binance Gift Card':['BINANCE','USDT GIFT CARD','#0b1715','#f3ba2f'],
+  'Razer Gold':['RAZER','GOLD','#07140c','#44d62c'],
+  'Google Play':['GOOGLE PLAY','GIFT CARD','#101827','#34a853'],
+  'Apple Gift Card':['APPLE','GIFT CARD','#111827','#d7d7d7'],
+  'Roblox':['ROBLOX','ROBUX','#111827','#e2231a'],
+  'Call of Duty Mobile':['CALL OF DUTY','MOBILE CP','#0b1220','#20e3c2']
+};
+function productArt(name){
+  const key=ART_STYLES[name]||['LOBBY','DIGITAL STORE','#0b1020','#6d5cff'];
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${key[2]}"/><stop offset="1" stop-color="${key[3]}"/></linearGradient><pattern id="p" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M45 0H0V45" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern></defs>
+  <rect width="900" height="600" fill="url(#g)"/><rect width="900" height="600" fill="url(#p)"/>
+  <circle cx="780" cy="100" r="180" fill="#fff" fill-opacity=".07"/><circle cx="120" cy="530" r="230" fill="#000" fill-opacity=".12"/>
+  <rect x="520" y="95" width="300" height="390" rx="28" fill="#fff" fill-opacity=".11" stroke="#fff" stroke-opacity=".35" stroke-width="3" transform="rotate(8 670 290)"/>
+  <rect x="550" y="130" width="240" height="320" rx="20" fill="url(#g)" stroke="#fff" stroke-opacity=".24" stroke-width="2" transform="rotate(8 670 290)"/>
+  <circle cx="670" cy="260" r="72" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".7" stroke-width="4"/>
+  <path d="M635 260h70M670 225v70" stroke="#fff" stroke-width="14" stroke-linecap="round" transform="rotate(8 670 260)"/>
+  <text x="60" y="245" fill="#fff" font-family="Arial,sans-serif" font-size="64" font-weight="900" letter-spacing="2">${key[0]}</text>
+  <text x="64" y="310" fill="#fff" fill-opacity=".84" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="4">${key[1]}</text>
+  <rect x="65" y="365" width="175" height="8" rx="4" fill="#fff" fill-opacity=".65"/>
+  <text x="65" y="530" fill="#fff" fill-opacity=".7" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4">LOBBY • DIGITAL GOODS</text>
+  </svg>`;
+  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+}
+function fallbackBrandImage(img){
+  if(img.dataset.fallbackApplied) return;
+  img.dataset.fallbackApplied='1';
+  const alt=(img.alt||'LOBBY').toLowerCase();
+  const key=alt.includes('roblox')?'roblox':alt.includes('free fire')?'freefire':alt.includes('call of duty')?'cod':alt.includes('pubg')?'pubg':alt.includes('binance')?'binance':alt.includes('razer')?'razer':alt.includes('apple')?'apple':alt.includes('google play')?'google-play':alt.includes('amazon')?'amazon':alt.includes('tiktok')?'tiktok':'generic';
+  img.src=productArt(key);
+  img.classList.add('image-fallback');
+}
+function applyImageFallbacks(){
+  document.querySelectorAll('img').forEach(img=>{
+    img.addEventListener('error',()=>fallbackBrandImage(img),{once:true});
+  });
+}
+function applyProductArt(){document.querySelectorAll('img[data-art]').forEach(img=>img.src=productArt(img.dataset.art));}
+
+// Official-image placeholders for brands that do not expose a stable public image URL.
+// These are styled as clean branded product panels rather than fabricated logos.
+function applyOfficialPanels(){
+  document.querySelectorAll('img[data-official]').forEach(img=>{
+    const key=img.dataset.official;
+    const wrap=img.parentElement;
+    const panel=document.createElement('div');
+    panel.className='official-panel '+key;
+    const labels={
+      'google-play':['GOOGLE PLAY','GIFT CARD'],
+      'amazon-gift':['amazon','GIFT CARD'],
+      'tiktok-coins':['TikTok','COINS']
+    };
+    panel.innerHTML='<div class="official-logo">'+labels[key][0]+'</div><div class="official-sub">'+labels[key][1]+'</div>';
+    img.replaceWith(panel);
+  });
+}
+
+applyProductArt();
+applyOfficialPanels();
+applyImageFallbacks();
+
+const products={
+ tiktok:{name:'TikTok Coins',type:'TikTok Coins',image:'https://www.tiktok.com/favicon.ico',accountLabel:'TikTok Username / Profile',packages:[['30 Coins',350],['350 Coins',1400],['700 Coins',2300],['1,400 Coins',5000],['3,500 Coins',11000],['7,000 Coins',22000],['17,500 Coins',46000]]},
+ robloxGift:{name:'Roblox Gift Card',type:'Roblox Gift Card',image:'https://cms-media.roblox.com/assets/4d55ea80-690f-f6ac-dda3-b7fb9355555c.webp',accountLabel:'Roblox Username / Email',packages:[['$10 USD',3000],['$25 USD',7000],['$50 USD',13000],['$100 USD',25500],['$200 USD',51000]]},
+ roblox:{name:'Roblox Robux',type:'Robux',image:'https://cms-media.roblox.com/assets/4d55ea80-690f-f6ac-dda3-b7fb9355555c.webp',accountLabel:'Roblox Gamer ID / Username',packages:[['400 Robux',1600],['800 Robux',3100],['1,700 Robux',5400],['4,500 Robux',12500],['10,000 Robux',25000]]},
+ freefire:{name:'Free Fire',type:'Diamonds',image:'https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mobile/common/COD_Mobile_Logo_New_2025.webp',accountLabel:'Free Fire Player ID',packages:[['100 Diamonds',400],['210 Diamonds',750],['530 Diamonds',1500],['1,080 Diamonds',2800],['2,200 Diamonds',5700]]},
+ cod:{name:'Call of Duty Mobile',type:'CP',image:'images/IMG_0243.jpeg',accountLabel:'COD Mobile Player ID',packages:[['80 CP',500],['420 CP',1500],['880 CP',2700],['2,400 CP',6200],['5,000 CP',12500],['10,800 CP',23500]]},
+ pubg:{name:'PUBG Mobile',type:'UC',image:'https://www.pubgmobile.com/images/event/brandassets/down-logo1.png',accountLabel:'PUBG Mobile Player ID',packages:[['60 UC',400],['325 UC',1500],['660 UC',2700],['1,800 UC',6200],['3,850 UC',12500],['8,100 UC',23500]]},
+ amazon:{name:'Amazon Gift Card',type:'Amazon Gift Card',image:'https://cdn.wildflamestudio.com/common/web_event/official2.ff.garena.all/img/20228/eb56db6919078b837ffd2e6a3b7e4aac.jpg',accountLabel:'Email / Username',packages:[['$10 USD',2800],['$20 USD',5300],['$25 USD',6700],['$50 USD',13000],['$100 USD',25500]]},
+ binance:{name:'Binance Gift Card',type:'USDT Gift Card',image:'https://bin.bnbstatic.com/static/gift-card-web/hero_illustration_grey_bg.svg',noAccount:true,packages:[['$5 USDT',1900],['$10 USDT',3400],['$20 USDT',7000],['$50 USDT',13000],['$100 USDT',25500],['$150 USDT',38000]]},
+ razer:{name:'Razer Gold',type:'Razer Gold Gift Card',image:'https://www.tiktok.com/favicon.ico',accountLabel:'Email / Username',packages:[['$10 USD',3000],['$20 USD',5600],['$50 USD',13500],['$100 USD',26000],['$200 USD',52500]]},
+ google:{name:'Google Play Gift Card',type:'Google Play Gift Card',image:'images/IMG_0230.jpeg',accountLabel:'Email / Username',packages:[['$10 USD',3000],['$25 USD',6700],['$50 USD',13000],['$100 USD',25500]]},
+ apple:{name:'Apple Gift Card',type:'Apple Gift Card',image:'images/IMG_0230.jpeg',accountLabel:'Apple Account Email',packages:[['$10 USD',3000],['$25 USD',6700],['$50 USD',13000],['$100 USD',25500]]}
+};
+let currentProduct=null,selectedPackage=null,quantity=1,cartItems=0,slide=0;
+function enterStore(){const e=document.getElementById('welcomeScreen');e.style.opacity='0';setTimeout(()=>e.style.display='none',450)}
+function money(n){return 'GYD $'+Number(n).toLocaleString()}
+function openProduct(id){const p=products[id];if(!p)return;currentProduct=id;selectedPackage=null;quantity=1;document.getElementById('modalImage').src=productArt(p.name); document.getElementById('modalImage').alt=p.name+' product artwork';document.getElementById('modalTitle').textContent=p.name;document.getElementById('modalType').textContent=p.type;document.getElementById('qtyValue').textContent='1';document.getElementById('accountFieldWrap').style.display=p.noAccount?'none':'block';document.getElementById('accountLabel').textContent=p.accountLabel||'Gamer ID / Username / Email';document.getElementById('accountInput').value='';document.getElementById('transactionInput').value='';const list=document.getElementById('packageList');list.innerHTML='';p.packages.forEach((pkg,i)=>{const b=document.createElement('button');b.className='package';b.type='button';b.innerHTML='<strong>'+pkg[0]+'</strong><span>'+money(pkg[1])+'</span>';b.onclick=()=>selectPackage(i,b);list.appendChild(b)});document.getElementById('totalValue').textContent=money(0);document.getElementById('productModal').classList.add('show')}
+function selectPackage(i,el){selectedPackage=products[currentProduct].packages[i];document.querySelectorAll('.package').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');updateTotal()}
+function closeProduct(){document.getElementById('productModal').classList.remove('show')}
+function changeQty(n){quantity=Math.max(1,Math.min(99,quantity+n));document.getElementById('qtyValue').textContent=quantity;updateTotal()}
+function updateTotal(){const t=selectedPackage?selectedPackage[1]*quantity:0;document.getElementById('totalValue').textContent=money(t)}
+function pointsKey(account){return 'lobbyPoints_'+account.trim().toLowerCase()}
+function getPoints(account){return Number(localStorage.getItem(pointsKey(account))||0)}
+function addPoints(account,total){if(!account)return 0;const earned=Math.floor(total/POINT_RATE);const key=pointsKey(account);const balance=getPoints(account)+earned;localStorage.setItem(key,balance);return earned}
+function showPoints(){const a=document.getElementById('pointsAccount').value.trim();if(!a){showToast('Enter your Gamer ID or email first.');return}const p=getPoints(a);document.getElementById('rewardPoints').textContent=p;document.getElementById('headerPoints').textContent=p;showToast('Your LOBBY Points balance is '+p+'.')}
+function sendOrder(){if(!currentProduct||!selectedPackage){showToast('Please select a package first.');return}const p=products[currentProduct];const account=p.noAccount?'Not required':document.getElementById('accountInput').value.trim();if(!p.noAccount&&!account){showToast('Enter your Gamer ID, username or email.');document.getElementById('accountInput').focus();return}const tx=document.getElementById('transactionInput').value.trim();const total=selectedPackage[1]*quantity;const earned=addPoints(p.noAccount?'guest':account,total);cartItems++;document.getElementById('cartCount').textContent=cartItems;if(!p.noAccount){document.getElementById('pointsAccount').value=account;document.getElementById('rewardPoints').textContent=getPoints(account);document.getElementById('headerPoints').textContent=getPoints(account)}const message=`🎮 LOBBY STORE ORDER\n\nProduct: ${p.name}\nPackage: ${selectedPackage[0]}\nQuantity: ${quantity}\nTotal: ${money(total)}\nCustomer ID / Email: ${account}\nMMG Merchant: LOBBY - 761-4285\nMMG Transaction ID: ${tx||'Not provided'}\n\n⭐ Estimated LOBBY Points earned: ${earned}\n\nPlease confirm my order.`;closeProduct();showToast('Opening WhatsApp with your LOBBY order…');setTimeout(()=>window.open('https://wa.me/'+BUSINESS_WHATSAPP+'?text='+encodeURIComponent(message),'_blank'),500)}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2800)}
+function setupSlider(){const slides=[...document.querySelectorAll('.hero-slide')],dots=document.getElementById('sliderDots');slides.forEach((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===0?' active':'');d.onclick=()=>goSlide(i);dots.appendChild(d)});setInterval(()=>goSlide((slide+1)%slides.length),4500)}
+function goSlide(i){const slides=[...document.querySelectorAll('.hero-slide')],dots=[...document.querySelectorAll('.dot')];slide=i;slides.forEach((s,n)=>s.classList.toggle('active',n===i));dots.forEach((d,n)=>d.classList.toggle('active',n===i))}
+document.getElementById('productModal').addEventListener('click',e=>{if(e.target.id==='productModal')closeProduct()});setupSlider();
+</script>
+</body>
+</html>
